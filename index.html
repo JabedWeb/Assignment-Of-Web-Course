@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Tasks</title>
+    <link rel="stylesheet" href="scripts/styles.css">
+</head>
+<body>
+<header>
+    <h1>213902046 </h1>
+    <p>Click on the tabs to view the tasks</p>
+</header>
+<div class="main_container">
+    <div class="sidebar_container">
+        <div class="sidebar">
+            <button class="tab-button" onclick="showTask('task1', this)">Perfect Number</button>
+            <button class="tab-button" onclick="showTask('task2', this)">Arithmetic Operations</button>
+            <button class="tab-button" onclick="showTask('task3', this)">Fetch Weather Info</button>
+            <button class="tab-button" onclick="showTask('task4', this)">Number Guessing Game</button>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="content">
+            <div id="task1" class="task-content">
+                <h2> Perfect Number</h2>
+                <input type="number" id="perfectNumberInput" placeholder="Enter a number">
+                <button onclick="checkPerfectNumber()">Check</button>
+                <div id="perfectNumberOutput" class="output"></div>
+            </div>
+    
+            <div id="task2" class="task-content">
+                <h2>Arithmetic Operations</h2>
+                <input type="number" id="number1" placeholder="Enter first number">
+                <input type="number" id="number2" placeholder="Enter second number">
+                <button onclick="performArithmetic()">Calculate</button>
+                <div id="arithmeticOutput" class="output"></div>
+            </div>
+    
+            <div id="task3" class="task-content">
+                <h2>Fetching Information using AJAX</h2>
+                <button onclick="fetchWeather()">Get Weather Info</button>
+                <div id="weatherOutput" class="output"></div>
+            </div>
+    
+            <div id="task4" class="task-content">
+                <h2>Number Guessing Game</h2>
+                <button onclick="startGame()">Start Game</button>
+                <div id="gameOutput" class="output"></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<script src="scripts/script.js"></script>
+</body>
+</html>

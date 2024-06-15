@@ -1,0 +1,54 @@
+{
+    "weather": [
+        {
+            "city": "Dhaka",
+            "temperature": 30,
+            "condition": "Sunny"
+        },
+        {
+            "city": "Chittagong",
+            "temperature": 28,
+            "condition": "Cloudy"
+        },
+        {
+            "city": "Khulna",
+            "temperature": 29,
+            "condition": "Rainy"
+        },
+        {
+            "city": "Rajshahi",
+            "temperature": 31,
+            "condition": "Sunny"
+        },
+        {
+            "city": "Sylhet",
+            "temperature": 27,
+            "condition": "Partly Cloudy"
+        },
+        {
+            "city": "Barisal",
+            "temperature": 30,
+            "condition": "Rainy"
+        },
+        {
+            "city": "Rangpur",
+            "temperature": 26,
+            "condition": "Cloudy"
+        },
+        {
+            "city": "Comilla",
+            "temperature": 29,
+            "condition": "Sunny"
+        },
+        {
+            "city": "Narayanganj",
+            "temperature": 30,
+            "condition": "Partly Cloudy"
+        },
+        {
+            "city": "Gazipur",
+            "temperature": 28,
+            "condition": "Sunny"
+        }
+    ]
+}
