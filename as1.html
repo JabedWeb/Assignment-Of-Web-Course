@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PHP Task Solutions</title>
+    <style>
+        .task {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PHP Task Solutions</h1>
+    
+    <!-- Task 1: Perfect Number -->
+    <div class="task" id="task1">
+        <h2>Task 1: Perfect Number</h2>
+        <form id="perfectNumberForm" onsubmit="checkPerfectNumber(); return false;">
+            Enter a number: <input type="text" name="number" id="perfectNumberInput">
+            <button type="submit">Check</button>
+        </form>
+        <div id="perfectNumberResult"></div>
+    </div>
+    
+    <!-- Task 2: Arithmetic Operations -->
+    <div class="task" id="task2">
+        <h2>Task 2: Arithmetic Operations</h2>
+        <form id="arithmeticForm" onsubmit="performArithmetic(); return false;">
+            Enter first number: <input type="text" name="num1" id="num1"><br>
+            Enter second number: <input type="text" name="num2" id="num2"><br>
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="arithmeticResult"></div>
+    </div>
+    
+    <!-- Task 3: Fetching Information using AJAX -->
+    <div class="task" id="task3">
+        <h2>Task 3: Fetching Information using AJAX</h2>
+        <button type="button" onclick="fetchWeather()">Fetch Weather</button>
+        <div id="weatherInfo"></div>
+    </div>
+    
+    <!-- Task 4: Number Guessing Game -->
+    <div class="task" id="task4">
+        <h2>Task 4: Number Guessing Game</h2>
+        <form id="guessingGameForm" onsubmit="playGuessingGame(); return false;">
+            Guess a number between 1 and 50: <input type="text" name="guess" id="guessInput">
+            <button type="submit">Guess</button>
+        </form>
+        <div id="guessingGameResult"></div>
+    </div>
+    
+    <script>
+        function checkPerfectNumber() {
+            var number = document.getElementById('perfectNumberInput').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "task1.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+                    document.getElementById('perfectNumberResult').innerHTML = response.message;
+                }
+            };
+            xhr.send(JSON.stringify({ number: number }));
+        }
+
+        function performArithmetic() {
+            var num1 = document.getElementById('num1').value;
+            var num2 = document.getElementById('num2').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "task2.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+                    document.getElementById('arithmeticResult').innerHTML = response.result;
+                }
+            };
+            xhr.send(JSON.stringify({ num1: num1, num2: num2 }));
+        }
+
+        function fetchWeather() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "weather.php", true);
+            xhr.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                    var weatherData = JSON.parse(this.responseText);
+                    var html = '<table border="1"><tr><th>City</th><th>Temperature</th><th>Condition</th></tr>';
+                    weatherData.weather.forEach(function(cityWeather) {
+                        html += `<tr><td>${cityWeather.city}</td><td>${cityWeather.temperature}</td><td>${cityWeather.condition}</td></tr>`;
+                    });
+                    html += '</table>';
+                    document.getElementById('weatherInfo').innerHTML = html;
+                }
+            };
+            xhr.send();
+        }
+
+        function playGuessingGame() {
+            var guess = document.getElementById('guessInput').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "task4.php", true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onreadystatechange = function() {
+                if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                    var response = JSON.parse(this.responseText);
+                    document.getElementById('guessingGameResult').innerHTML = response.message;
+                }
+            };
+            xhr.send(JSON.stringify({ guess: guess }));
+        }
+    </script>
+</body>
+</html>
