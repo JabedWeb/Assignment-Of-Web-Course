@@ -14,3 +14,38 @@ if (isset($_POST['number'])) {
     }
 }
 ?>
+
+
+
+
+//cookies init
+setcookie("username","Rayhan",time()+24*60*60-1);
+
+
+//session
+session_start();
+$_SESSION["username"]="Rayhan"
+
+//setCookies
+setcookie("cart","5",time()+7*24*60*60)
+$name=$_COOKIE["username"]
+
+
+
+//remove  cookies
+setcookie("cart","5",time()+7*24*60*60-1)
+
+//remove session
+unset($_SESSION["username"]);
+
+
+
+
+
+
+
+
+
+
+
+
